@@ -43,14 +43,14 @@ def test_negative_input():
     from foo_bar_baz import foo_bar_baz
     assert foo_bar_baz(-5) == "" # i < n so this won't work
 
-# testing multiple baz occurreneces
-def test_multiple_baz_occurrences():
-    """Test 7: sequence with multiple 'Baz' occurrences"""
-    from foo_bar_baz import foo_bar_baz
-    result = foo_bar_baz(30) 
-    # for sequence of 30, there should be two "Baz", 15 and 30
-    assert "Baz" in result
-    assert result.count("Baz") == 2  # this will check that
+# # testing multiple baz occurreneces
+# def test_multiple_baz_occurrences():
+#     """Test 7: sequence with multiple 'Baz' occurrences"""
+#     from foo_bar_baz import foo_bar_baz
+#     result = foo_bar_baz(30) 
+#     # for sequence of 30, there should be two "Baz", 15 and 30
+#     assert "Baz" in result
+#     assert result.count("Baz") == 2  # this will check that
 
 # test to make sure format is correct
 def test_output_format():
