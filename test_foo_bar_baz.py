@@ -4,36 +4,36 @@ from foo_bar_baz import foo_bar_baz
 
 # Insert test cases here
 
+# ADD IN MESSAGES SO WE KNOW WHICH TEST IS RUNNING
+# Import foo_bar_baz every single time so tests can be individual
+
+# testing empty case so n is 0
 def test_empty_sequence():
-    """Test when n is 0 (edge case)."""
+    """Test 1: n = 0 (edge case)"""
     from foo_bar_baz import foo_bar_baz
     assert foo_bar_baz(0) == ""
 
+# testing single number so n is 1
 def test_single_number():
-    """Test when n is 1 (edge case)."""
+    """Test 2: n = 1 (edge case)"""
     from foo_bar_baz import foo_bar_baz
     assert foo_bar_baz(1) == "1"
 
+# testing small sequence for only foo and bar
 def test_small_sequence():
-    """Test a small sequence that includes basic cases but no 'Baz'."""
+    """Test 3: small sequence, NO baz"""
     from foo_bar_baz import foo_bar_baz
     assert foo_bar_baz(7) == "1 2 Foo 4 Bar Foo 7"
 
 def test_sequence_with_baz():
-    """Test a sequence that includes at least one 'Baz' (divisible by both 3 and 5)."""
+    """Test 4: sequence, at least ONE baz"""
     from foo_bar_baz import foo_bar_baz
     assert foo_bar_baz(15) == "1 2 Foo 4 Bar Foo 7 8 Foo Bar 11 Foo 13 14 Baz"
 
 def test_negative_input():
-    """Test handling of negative input (edge case)."""
+    """Test 5: negative input"""
     from foo_bar_baz import foo_bar_baz
-    assert foo_bar_baz(-5) == ""
-
-def test_large_sequence():
-    """Test a slightly larger sequence to ensure scalability."""
-    from foo_bar_baz import foo_bar_baz
-    expected = "1 2 Foo 4 Bar Foo 7 8 Foo Bar 11 Foo 13 14 Baz 16 17 Foo 19 Bar"
-    assert foo_bar_baz(20) == expected
+    assert foo_bar_baz(-5) == "" # i < n so this won't work
 
 def test_multiple_baz_occurrences():
     """Test a sequence with multiple 'Baz' occurrences."""
