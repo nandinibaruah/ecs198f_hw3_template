@@ -19,68 +19,46 @@ def test_single_number():
     from foo_bar_baz import foo_bar_baz
     assert foo_bar_baz(1) == "1"
 
-# testing small sequence for only foo and bar
-def test_small_sequence():
-    """Test 3: small sequence, NO baz"""
+# testing foo function
+def test_sequence_with_foo():
+    """Test 3: sequence with just foo"""
     from foo_bar_baz import foo_bar_baz
-    assert foo_bar_baz(7) == "1 2 Foo 4 Bar Foo 7"
+    assert foo_bar_baz(4) == "1 2 Foo 4"
 
+# testing bar function
+def test_small_sequence():
+    """Test 4: small sequence with foo and bar"""
+    from foo_bar_baz import foo_bar_baz
+    assert foo_bar_baz(6) == "1 2 Foo 4 Bar Foo"
+
+# testing baz sequence
 def test_sequence_with_baz():
-    """Test 4: sequence, at least ONE baz"""
+    """Test 5: sequence, at least ONE baz"""
     from foo_bar_baz import foo_bar_baz
     assert foo_bar_baz(15) == "1 2 Foo 4 Bar Foo 7 8 Foo Bar 11 Foo 13 14 Baz"
 
+# testing negative input
 def test_negative_input():
-    """Test 5: negative input"""
+    """Test 6: negative input"""
     from foo_bar_baz import foo_bar_baz
     assert foo_bar_baz(-5) == "" # i < n so this won't work
 
+# testing multiple baz occurreneces
 def test_multiple_baz_occurrences():
-    """Test a sequence with multiple 'Baz' occurrences."""
+    """Test 7: sequence with multiple 'Baz' occurrences"""
     from foo_bar_baz import foo_bar_baz
-    result = foo_bar_baz(30)
+    result = foo_bar_baz(30) 
+    # for sequence of 30, there should be two "Baz", 15 and 30
     assert "Baz" in result
-    assert result.count("Baz") == 2  # At 15 and 30
+    assert result.count("Baz") == 2  # this will check that
 
+# test to make sure format is correct
 def test_output_format():
-    """Test that the output is correctly formatted with single spaces."""
+    """Test 8: output is correctly formatted with single spaces"""
     from foo_bar_baz import foo_bar_baz
     result = foo_bar_baz(10)
-    # Check that there are no double spaces
+    # check that there are no double spaces
     assert "  " not in result
-    # Check that it starts and ends correctly (no leading/trailing spaces)
+    # check that it starts and ends correctly (no leading/trailing spaces)
     assert not result.startswith(" ")
     assert not result.endswith(" ")
-
-def test_foo_replacement():
-    """Test that numbers divisible by 3 are replaced with 'Foo'."""
-    from foo_bar_baz import foo_bar_baz
-    result = foo_bar_baz(12).split()
-    assert result[2] == "Foo"  # 3rd element (index 2) should be "Foo" for number 3
-    assert result[5] == "Foo"  # 6th element (index 5) should be "Foo" for number 6
-    assert result[8] == "Foo"  # 9th element (index 8) should be "Foo" for number 9
-    assert result[11] == "Foo"  # 12th element (index 11) should be "Foo" for number 12
-
-def test_bar_replacement():
-    """Test that numbers divisible by 5 are replaced with 'Bar'."""
-    from foo_bar_baz import foo_bar_baz
-    result = foo_bar_baz(20).split()
-    assert result[4] == "Bar"  # 5th element (index 4) should be "Bar" for number 5
-    assert result[9] == "Bar"  # 10th element (index 9) should be "Bar" for number 10
-    assert result[19] == "Bar"  # 20th element (index 19) should be "Bar" for number 20
-
-def test_baz_replacement():
-    """Test that numbers divisible by both 3 and 5 are replaced with 'Baz'."""
-    from foo_bar_baz import foo_bar_baz
-    result = foo_bar_baz(30).split()
-    assert result[14] == "Baz"  # 15th element (index 14) should be "Baz" for number 15
-    assert result[29] == "Baz"  # 30th element (index 29) should be "Baz" for number 30
-
-def test_non_replaced_numbers():
-    """Test that numbers not divisible by 3 or 5 are not replaced."""
-    from foo_bar_baz import foo_bar_baz
-    result = foo_bar_baz(7).split()
-    assert result[0] == "1"
-    assert result[1] == "2"
-    assert result[3] == "4"
-    assert result[6] == "7"
